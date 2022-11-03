@@ -1,0 +1,96 @@
+.nav-tabs .nav-item .nav-link {
+    background-color: #9eacf3;
+    color: black;
+    margin-top: -2px;
+    position: sticky;
+    // margin-left: 13px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.nav-tabs {
+    background-color: #cbd4ff;
+    padding-left: 49px;
+    margin-right: 0px;
+    height: 43px;
+    box-shadow: inset 0px 3px 6px gainsboro, 0px 1px 12px gainsboro  !important;
+    opacity: 1;
+    font-family: 'Roboto';
+}
+
+.nav-tabs .nav-item {
+    margin: 6px;
+    margin-left: 10px;
+}
+
+.supClass {
+    font-size:10px;
+}
+
+.contant {
+    font: normal normal medium 20px/24px Roboto;
+    font-weight: 650;
+}
+
+// activ tab
+.nav-tabs .nav-item .nav-link.active {
+    color: blue;
+    background-color: white !important;
+    margin-left: 10px;
+    margin-top: -1px;
+    //box-shadow: 1px 2px 5px #d0d4db;
+    //border-bottom: solid 2px white  !important;
+    border-radius: 8px 8px 0px 0px !important;
+    border-bottom: solid 3px red;
+}
+
+@media only screen and (max-width: 999px) {
+
+    .nav-tabs .nav-item .nav-link {
+        background-color: #9eacf3;
+        color: black;
+        margin-top: -2px;
+        position: sticky;
+        // margin-left: 13px;
+        font-size: 14px;
+        cursor: pointer;
+        padding: 5px;
+    }
+    
+    .nav-tabs {
+        background-color: #cbd4ff;
+        padding-left: 9px;
+        margin-right: 0px;
+        height: 37px;
+        box-shadow: inset 0px 3px 6px gainsboro, 0px 1px 12px gainsboro  !important;
+        opacity: 1;
+        font-family: 'Roboto';
+    }
+    
+    .nav-tabs .nav-item {
+        margin: 6px;
+        margin-left: 2px;
+    }
+    
+    .supClass {
+        font-size:9px;
+    }
+    
+    .contant {
+        font: normal normal medium 20px/24px Roboto;
+        font-weight: 650;
+    }
+    
+    // activ tab
+    .nav-tabs .nav-item .nav-link.active {
+        color: blue;
+        background-color: white;
+        margin-left: 10px;
+        margin-top: -1px;
+        // box-shadow: 1px 2px 5px #d0d4db;
+       // border-bottom: solid 2px white  !important;
+        border-radius: 8px 8px 0px 0px !important;
+        border-bottom: solid 3px red;
+    }
+
+}

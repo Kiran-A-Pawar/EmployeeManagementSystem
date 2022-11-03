@@ -1,0 +1,52 @@
+<mat-card>
+    <mat-card-content>
+        <div class="header">
+            <P>Registration Of Employee</P>
+        </div>
+        <form (ngSubmit)="onSubmit()" name="registrationForm" [formGroup]="registrationForm">
+            <div class="emailInput">
+                <mat-form-field class="full-width" autocapitalize="new-password" appearance="outline">
+                    <mat-label>Employee Name</mat-label>
+                    <input formControlName="employeeName" autocomplete="new-password" matInput placeholder="Enter Employee Name" required />
+                    <mat-error *ngIf="!registrationForm.controls['employeeName'].valid">
+                        Employee name is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="postionInput">
+                <mat-form-field class="full-width" autocomplete="nope" appearance="outline">
+                    <mat-label>Postion</mat-label>
+                    <input formControlName="position" autocomplete="nope" matInput placeholder="Enter Employee postion" required />
+                    <mat-error *ngIf="!registrationForm.controls['position'].valid">
+                        position is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="aboutInput">
+                <mat-form-field class="full-width"autocomplete="nope" appearance="outline">
+                    <mat-label>About</mat-label>
+                    <input formControlName="about" autocomplete="nope" matInput placeholder="Enter Employee About" required />
+                    <mat-error *ngIf="!registrationForm.controls['about'].valid">
+                        About is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Choose a joining date</mat-label>
+                    <input matInput formControlName="date" [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="!registrationForm.controls['date'].valid">
+                        Date is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button mat-flat-button color="primary">Submit</button>
+        </form>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item nohover">
+      <a aria-controls="home" aria-selected="true" role="tab" class="nav-link" data-toggle="tab" (click)="newEmployeeRegistration()">New Employee</a>
+    </li>
+    <li class="nav-item nohover">
+      <a aria-controls="home" aria-selected="true" role="tab"  class="nav-link" data-toggle="tab" (click)="listView()">List View</a>
+    </li>
+    <li class="nav-item nohover active">
+      <a aria-controls="home" aria-selected="true" role="tab"  class="nav-link" data-toggle="tab" (click)="cardView()">Card View</a>
+    </li>
+</ul>
+
+<div *ngIf="newEmployeeData == true">
+  <app-registration-of-employees></app-registration-of-employees>
+</div>
+
+<div *ngIf="cardViewData == true">
+    <app-card-view></app-card-view>
+</div>
+<div *ngIf="listViewData == true">
+    <app-list-view></app-list-view>
+</div>
+
+  <router-outlet> </router-outlet>

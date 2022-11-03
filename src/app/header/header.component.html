@@ -1,0 +1,46 @@
+
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3 col-3">
+                <div class="logo view">
+                    <img src="https://s3.amazonaws.com/static.freshersworld.com/hotjobs-logo/2020/03/26/logo_0_1585206813_1.jpg" height="50" width="50">
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9 col-9 text-end">
+                <div class="menu_icon" (click)="expandMenuOption()">
+                    <span class="expandIcon"></span>
+                    <span class="expandIcon"></span>
+                    <span class="expandIcon"></span>
+                </div>
+    
+                <div class="menu" [class.menuClass]="this.empService.expandMenu">
+                    <!-- <span class="searchboxs">
+                        <input type="text" id="searchbar" name="search" [(ngModel)]="searchInput" autocomplete="off">
+                        <span class="searchAfter">
+                            <span class='fa fa-search inputSearch' style="z-index: 2 !important;"></span>
+                        </span>
+                    </span> -->
+                    <form name="empForm" [formGroup]="empForm">
+                        <span class="searchboxs">
+                            <input type="text" id="searchbar" name="search" formControlName="eName" placeholder="Serch Employee" autocomplete="off">
+                            <span class="searchAfter">
+                                <span class='fa fa-search inputSearch' style="z-index: 2 !important;"></span>
+                            </span>
+                        </span>
+                    </form>
+                    <ul class="options">
+                        <li><a (click)="goToEmployeesIndex()">Employees</a></li>
+                        <li class="login"><a (click)="goToLoginPage()">Login</a></li>
+                        <li *ngIf="this.empService.isLogin == true;"><a (click)="logOut()">Logout</a></li>
+                        <li *ngIf="this.empService.isLogin == false;" class="logout"><a>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<router-outlet> </router-outlet>
+<app-footer></app-footer>
+
+<!-- <app-login></app-login> -->

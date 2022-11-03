@@ -1,0 +1,114 @@
+header{
+    padding: 12px 0;
+    background-color: #1d1563;
+}
+
+.container{
+    height: 60px;
+}
+
+.logout{
+    visibility: hidden;
+}
+
+.menu ul{
+    padding: 0px;
+   // margin: 0px;
+}
+
+.login{
+    margin-left: 20px;
+}
+
+.view{
+    margin-left: -248px;
+}
+
+.searchboxs{
+    margin-right: -115px;
+}
+
+input:focus {
+    color: #1d1563  !important;
+    outline: gray;
+  }
+
+.inputSearch{
+    margin-left: -21px;
+}
+
+.options{
+    margin-top: 20px;
+    margin-right: -174px;
+}
+
+.menu ul li{
+    color: white;
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 24px;
+    font-size: 16px;
+
+}
+
+.menu ul li:hover{
+    color: #ffd32b;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+
+}
+
+@media only screen and (max-width: 999px) {
+    
+    .menu{
+        position: fixed;
+        right: -280px;
+        top: 64px;
+        height: 33%;
+        width: 280px;
+        background-color: #1d1563;
+        transition: 0.4s ease-in-out;
+        z-index: 100;
+    }
+
+    .expandIcon{
+        margin-top: 3px;
+    }
+
+    .searchboxs{
+        margin-right: 73px;
+    }
+
+    .view{
+        margin-left: 4px;
+    }
+
+    .menu ul li{
+        display: block;
+        text-align: left;
+        margin: 0;
+        padding: 10px 0 10px 26px;
+        border-bottom: solid res 1px;
+    }
+
+    .menu_icon{
+        display: inline-block;
+        right: 0;
+        top: 15px;
+        position: relative;
+    }
+
+    .menu_icon span{
+        width: 32px;
+        height: 3px;
+        background-color: white;
+        display: block;
+    }
+
+    .menuClass{
+        right: 0;
+        transition: 0.4s ease-in-out;
+    }
+}
+  
+

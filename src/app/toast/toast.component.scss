@@ -1,0 +1,32 @@
+.message {
+    padding-left: 10px;
+    font-size: 18px;
+    color: green;
+}
+
+.snack-container{
+    background-color: white;
+}
+
+.fa-check-circle {
+    //color: #e91e03fd;
+    font-size: 14px;
+    animation-name: grow;
+    -webkit-animation-name: grow;
+    animation-duration: 2s;
+    -webkit-animation-duration: 2s;
+}
+::ng-deep .mat-snack-bar-container {
+    //color: #e91e03fd !important;
+    background-color: white !important;
+    margin-top: 80px;
+}
+
+@keyframes grow {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.333);
+    }
+}
