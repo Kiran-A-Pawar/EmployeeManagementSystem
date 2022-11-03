@@ -23,7 +23,6 @@ export class CardViewComponent implements OnInit {
   ngOnInit(): void {
     this.empService.getEmployees();
     this.allEmployeesData = this.empService.allEmployees;
-    console.log("onit++",this.empService.allEmployees[0].employeeName)
   }
 
   updateEmployee(empDetails:any,id:any){

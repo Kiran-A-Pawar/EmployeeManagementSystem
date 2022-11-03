@@ -35,16 +35,18 @@ export class RegistrationOfEmployeesComponent implements OnInit {
     this.createRegistrationForm();
     this.empService.updateEmployeeObject;
     this.ms.subscribe('EDIT_EMPLOYEE_DATA', data => {
-      console.log("Data&&&",data);
-      this.oldEmployeeData = data.empDetails;
-      this.editEmployeeData = true;
-      this.updateEmp = data;
-        this.registrationForm.reset({
-        employeeName: data.empDetails.employeeName,
-        position: data.empDetails.position,
-        about: data.empDetails.about,
-        date: data.empDetails.date,
-       });
+      console.log("Data = ",data);
+      if (Object.entries(data).length != 0) {
+        this.editEmployeeData = true;
+        this.oldEmployeeData = data.empDetails;
+        this.updateEmp = data;
+          this.registrationForm.reset({
+          employeeName: data.empDetails.employeeName,
+          position: data.empDetails.position,
+          about: data.empDetails.about,
+          date: data.empDetails.date,
+         });
+      }
     });
   }  
 
@@ -86,6 +88,4 @@ export class RegistrationOfEmployeesComponent implements OnInit {
       }      
     localStorage.setItem('Employees', JSON.stringify(emps));
   }
-
-
 }
