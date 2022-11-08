@@ -3,14 +3,16 @@
       <div class="header">
         <P>Sign Into Your Account </P>
       </div>
-      <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+      <form (ngSubmit)="onLogin()" name="loginForm" autocomplete="new-user" [formGroup]="loginForm">
         <div class="emailInput">
-          <mat-form-field class="full-width" appearance="outline">
+          <mat-form-field class="full-width" autocomplete="nope" appearance="outline">
             <mat-label>User</mat-label>
-            <input
+            <input autocomplete="off"
               formControlName="user"
               matInput
-              placeholder="Enter User Name" required
+              name="new-user"
+              value=""
+              placeholder="Enter User Name"
             />
             <mat-error *ngIf="!loginForm.controls['user'].valid">
                 User name is required
@@ -24,7 +26,7 @@
           </span>
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
-            <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" required />
+            <input formControlName="password" matInput [type]=" hide ? 'password' : 'text'" autocomplete="nope" required />
             <button  mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'"
             [attr.aria-pressed]="hide">
             <mat-icon>

@@ -1,52 +1,64 @@
 <mat-card>
     <mat-card-content>
         <div class="header">
-            <P>Registration Of Employee</P>
+            <P class="registration">Registration Of Employee</P>
         </div>
         <form (ngSubmit)="onSubmit()" name="registrationForm" [formGroup]="registrationForm">
-            <div class="emailInput">
-                <mat-form-field class="full-width" autocapitalize="new-password" appearance="outline">
-                    <mat-label>Employee Name</mat-label>
-                    <input formControlName="employeeName" autocomplete="new-password" matInput placeholder="Enter Employee Name" required />
-                    <mat-error *ngIf="!registrationForm.controls['employeeName'].valid">
-                        Employee name is required
-                    </mat-error>
-                </mat-form-field>
+            <div class="row employeeRow">
+                <div class="col-3 nameCol">
+                   Employee Name <span class="star">*</span>
+                </div>
+                <div class="col-9 inputCol">
+                   <input formControlName="employeeName" (click)="addData()" class="inputBox" autocomplete="off" [ngClass]="{ 'employeeRequired' : invalidEmployee == true}" placeholder="Enter Employee Name"/>
+                </div>
+            </div>
+            <div>
+                <div *ngIf="invalidEmployee == true" [ngClass]="{ 'employeeRequiredDiv' : invalidEmployee == true}">Employee name is required</div>
             </div>
 
             <div class="postionInput">
-                <mat-form-field class="full-width" autocomplete="nope" appearance="outline">
-                    <mat-label>Postion</mat-label>
-                    <input formControlName="position" autocomplete="nope" matInput placeholder="Enter Employee postion" required />
-                    <mat-error *ngIf="!registrationForm.controls['position'].valid">
-                        position is required
-                    </mat-error>
-                </mat-form-field>
+                <div class="row">
+                    <div class="col-3 nameCol">
+                       Employee Postion <span class="star">*</span>
+                    </div>
+                    <div class="col-9 inputCol">
+                        <input formControlName="position" (click)="addPositionData()" class="inputBox" autocomplete="off" [ngClass]="{ 'employeeRequired' : invalidPosition == true}" placeholder="Enter Employee Postion"/>
+                    </div>
+                </div>
             </div>
+            <div *ngIf="invalidPosition == true" [ngClass]="{ 'employeeRequiredDiv' : invalidPosition == true}">Employee postion is required</div>
 
             <div class="aboutInput">
-                <mat-form-field class="full-width"autocomplete="nope" appearance="outline">
-                    <mat-label>About</mat-label>
-                    <input formControlName="about" autocomplete="nope" matInput placeholder="Enter Employee About" required />
-                    <mat-error *ngIf="!registrationForm.controls['about'].valid">
-                        About is required
-                    </mat-error>
-                </mat-form-field>
+                <div class="row">
+                    <div class="col-3 nameCol">
+                        About <span class="star">*</span>
+                    </div>
+                    <div class="col-9 inputCol">
+                        <input formControlName="about" (click)="addAboutData()" class="inputBox" autocomplete="off" [ngClass]="{ 'employeeRequired' : invalidAbout == true}" placeholder="Enter Employee About"/>
+                    </div>
+                </div>
             </div>
 
+            <div *ngIf="invalidAbout == true" [ngClass]="{ 'employeeRequiredDiv' : invalidAbout == true}">Employee abot is required</div>
+
             <div>
-                <mat-form-field class="full-width" appearance="outline">
-                    <mat-label>Choose a joining date</mat-label>
-                    <input matInput formControlName="date" [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                    <mat-error *ngIf="!registrationForm.controls['date'].valid">
-                        Date is required
-                    </mat-error>
-                </mat-form-field>
+                <div class="row">
+                    <div class="col-3 nameCol date">
+                        Joining Date <span class="star">*</span>
+                    </div>
+                    <div clas="col-9 inputCol" class="dateInputBox" [ngClass]="{ 'dateRequired' : invalidDate == true}">
+                            <input formControlName="date" (click)="addDate()" class="dateInput" [matDatepickerFilter]="myFilter"
+                                placeholder="Select Joining Date" [matDatepicker]="picker">
+                            <mat-hint class="dateFormate">MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix class="dateFormate" [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                    </div>
+                </div>
             </div>
-            <button mat-flat-button color="primary">Submit</button>
+
+            <div *ngIf="invalidDate == true" [ngClass]="{ 'employeeRequiredDate' : invalidDate == true}">Date is required</div>
+
+            <button mat-flat-button class="submitbutton" color="primary">Submit</button>
         </form>
     </mat-card-content>
 </mat-card>

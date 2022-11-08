@@ -19,10 +19,38 @@
           </mat-card-content>
           <mat-card-actions>
             <button type="button" (click)="updateEmployee(employee,i)" class="btn btn-success editButton">Edit</button>
-            <button type="button" (click)="deleteEmployee(employee,i)" class="btn btn-danger deletebutton">Delete</button>
+            <button type="button" (click)="openPopup(deleteEmp, employee, i)" class="btn btn-danger deletebutton">Delete</button>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
   </div>
 </div>
+
+
+<ng-template #deleteEmp let-deleteEmpPopUpModal>
+  <div class="modal-header">
+    <div class="modal-title">
+      <span style="font-size: 22px; font-weight: 500;"> Delete</span>
+    </div>
+    <button #closeBtn type="button" class="close" aria-label="Close" (click)="deleteEmpPopUpModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="model-content">
+        Are you sure you want to delete '{{deleteEmployeesData.employeeName}}' details ?
+    </div>
+  </div>
+  <div class="modal-footer">
+      <span style="margin-right: 10px; font-size: 14px;">
+          <button class="nobutton" (click)="deleteEmpPopUpModal.dismiss('Cross click')" style="background:white !important;
+          border: solid 2px #1D1563; width: 60px; border-radius: 4px !important; height: 33px; width: 76px; color: #1D1563; font-size: 14px; font-weight: 600;" >
+              No
+            </button>
+      </span>
+    <button type="button" class="btn-custom-primary yesButton" (click)=" deleteEmployeeData(); deleteEmpPopUpModal.dismiss('Cross click')">
+      Yes
+    </button>
+  </div>
+</ng-template>

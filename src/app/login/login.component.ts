@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Attribute, Component, Directive, HostBinding, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeesDataService } from '../employees-data.service';
@@ -17,26 +17,30 @@ export class LoginComponent implements OnInit {
   invalidPassword = false;
   invalidData = false;
   editEmployeeData = false;
+  Name= ""
 
   constructor(private router: Router,
     public ms: MessageService, 
     public empService: EmployeesDataService,
-    private toastService: ToastService) { }
+    private toastService: ToastService,) {  }
 
   ngOnInit(): void {
     this.ms.subscribe('EDIT_EMPLOYEE_DATA_AFTER_LOGIN', data => {
-      this.editEmployeeData = data;
+        this.editEmployeeData = data;
     });
 
     this.ms.subscribe('USER_LOGOUT', data => {
-      this.editEmployeeData = data;
-      this.userLogOut();
+      if (Object.entries(data).length != 0) {
+        this.editEmployeeData = data;
+        this.userLogOut();
+      }
     });
     
     this.loginForm = new FormGroup({
       user : new FormControl('',[Validators.required]),
       password : new FormControl('',[Validators.required,Validators.minLength(5)])
     })
+    this.loginForm.value.user = ''
   }
 
   onLogin(){
@@ -63,6 +67,8 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.loginForm.value.user == "admin" && this.loginForm.value.password == "admin" && this.editEmployeeData == true){
+      this.empService.isLogin = true;
+      this.toastService.openSnackBar('Login Sucessfully');
       this.router.navigate(['/', 'RegistrationOfEmployees']);
     }else{
       if(this.loginForm.value.user == "admin" && this.loginForm.value.password == "admin"){

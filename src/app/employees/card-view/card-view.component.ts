@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { EmployeesDataService } from 'src/app/employees-data.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-card-view',
@@ -11,14 +12,17 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class CardViewComponent implements OnInit {
   allEmployeesData : any = {};
+  deleteEmployeesData : any = {};
   employeeName = "";
   position = "";
   description = "";
+  empId = 0;
 
   constructor(private empService: EmployeesDataService, 
     private router: Router,
     public ms: MessageService,
-    private toastService: ToastService,) { }
+    private toastService: ToastService,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.empService.getEmployees();
@@ -37,6 +41,16 @@ export class CardViewComponent implements OnInit {
     }else{
       this.router.navigate(['/', 'login']);
     }
+  }
+
+  deleteEmployeeData(){
+    this.deleteEmployee(this.deleteEmployeesData,this.empId)
+  }
+
+  openPopup(content: any, employee:any, id:any) {
+    this.empId = id;
+    this.deleteEmployeesData = employee;
+    this.modalService.open(content, { centered: true, windowClass: 'shortcut-modal', size: 'small' });
   }
 
   deleteEmployee(employee:any,id:any){

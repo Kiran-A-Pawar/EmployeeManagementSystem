@@ -6,6 +6,24 @@
     margin-top: 25px;
   }
 
+  .close{
+    border: none;
+    background-color: white;
+    font-size: 25px;
+  }
+
+  .yesButton{
+    background:#1D1563 !important;
+    border: solid 2px #1D1563;
+    width: 60px;
+    border-radius: 4px !important; 
+    height: 33px; 
+    width: 76px; 
+    color: white; 
+    font-size: 14px;
+    font-weight: 500;
+  }
+
   .deletebutton{
     margin-left: 10px;
     font-size: 12px;
@@ -59,6 +77,12 @@
     .example-header-image {
       background-image: url('https://avsab.org/wp-content/uploads/2018/03/AVSAB-Account-Support-Documentation.jpg');
       background-size: cover;
+    }
+
+    .close{
+      border: none;
+      background-color: white;
+      font-size: 25px;
     }
 
   }

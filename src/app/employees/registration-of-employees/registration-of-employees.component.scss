@@ -4,48 +4,166 @@ mat-card {
     text-align: center;
     max-height: 900px;
   }
-  
-  .header{
-    text-align: center;
-  
+
+  input::placeholder {
+	  color: #6a6881;
   }
-  .full-width {
+
+  .star{
+    color: red;
+  }
+
+  .dateFormate{
+    color: #6a6881
+  }
+
+  .inputBox{
+    border: solid 2px #1d1563;
     width: 80%;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 1%;
+    padding-left: 2%;
   }
-  
-  .button-row {
-    padding-top: 5px;
+
+  .employeeRequired{
+    border: solid 2px red;
+    
   }
-  
-  .button-row a {
-    margin-right: 8px;
-    text-align: center;
+
+  .employeeRequired input::placeholder {
+    color: red !important;
   }
-  
-  .forget-password{
-    padding-left: 0px;
+
+  .employeeRequiredDiv{
+    color: red;
+    margin-left: -94px;
+    margin-top: 10px;
   }
-  
-  .emailInput{
-    padding-top: 10px;
+
+  .employeeRequiredDate{
+    color: red;
+    margin-left: -160px;
+    margin-top: 10px;
+  }
+
+  .dateInput{
+    width: 57%;
+    height: 44px;
+    border: none;
+    margin-left: -20px;
+  }
+
+  .dateInputBox{
+    border: solid 2px #1d1563;
+    width: 57%;
+    height: 50px;
+    border-radius: 5px;
+    margin-left: 3%;
+    margin-top: 30px;
+  }
+
+  .employeeRequired input::placeholder {
+	  color: red;
+  }
+
+  .inputCol{
+    text-align: initial;
+  }
+
+  .nameCol{
+    padding-top:17px ;
+    text-align: initial;
+    color: #1d1563;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .dateInputBox input:focus {
+    border: none;
+    outline: none;
+  }
+
+  .dateRequired{
+    border: solid 2px red;
+  }
+
+  .registration{
+    padding-left: 60px;
+  }
+
+  .employeeRow{
+    margin-top: 15px;
   }
 
   .postionInput{
-    padding-top: 10px;
+    margin-top: 30px;
   }
 
   .aboutInput{
-    padding-top: 10px;
+    margin-top: 30px;
   }
+
+  .submitbutton{
+    margin-top: 15px;
+    margin-left: 46px;
+  }
+
+  .date{
+    padding-top: 45px;
+  }
+
+  // mat-form-field-outline{
+
+  // }
+
+  // .invalidEmp ::ng-deep .mat-form-field-outline{
+  //   border: solid 2px red;
+  //   border-radius: 6px;
+  // }
   
-  .contentBody {
-    padding: 60px 1rem;
-    background :#1b6ca8;
-    display: block;
+  .header{
+    text-align: center;
+    font-size: 18px;
+    color: #1d1563;
   }
+  // .full-width {
+  //   width: 80%;
+  // }
   
-  .aLink{
-    float: right;
-    padding-right: 60px;
-    text-decoration: none;
-  }
+  // .button-row {
+  //   padding-top: 5px;
+  // }
+  
+  // .button-row a {
+  //   margin-right: 8px;
+  //   text-align: center;
+  // }
+  
+  // .forget-password{
+  //   padding-left: 0px;
+  // }
+  
+  // .emailInput{
+  //   padding-top: 10px;
+  // }
+
+  // .postionInput{
+  //   padding-top: 10px;
+  // }
+
+  // .aboutInput{
+  //   padding-top: 10px;
+  // }
+  
+  // .contentBody {
+  //   padding: 60px 1rem;
+  //   background :#1b6ca8;
+  //   display: block;
+  // }
+  
+  // .aLink{
+  //   float: right;
+  //   padding-right: 60px;
+  //   text-decoration: none;
+  // }

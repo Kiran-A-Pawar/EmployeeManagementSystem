@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { EmployeesDataService } from 'src/app/employees-data.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-of-employees',
@@ -19,6 +21,10 @@ export class RegistrationOfEmployeesComponent implements OnInit {
   employeeSubmited = false;
   oldEmployeeData : any = {};
   editEmployeeData = false;
+  invalidEmployee = false;
+  invalidPosition = false;
+  invalidAbout = false;
+  invalidDate = false;
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -29,6 +35,8 @@ export class RegistrationOfEmployeesComponent implements OnInit {
     private empService: EmployeesDataService,
     public ms: MessageService,
     private toastService: ToastService,
+    private modalService: NgbModal,
+    private router: Router,
     ) {}
 
   ngOnInit(): void {
@@ -52,10 +60,11 @@ export class RegistrationOfEmployeesComponent implements OnInit {
 
   createRegistrationForm(){
     this.registrationForm = this.fb.group({
-      employeeName : new FormControl(null,[Validators.required]),
-      position : new FormControl(null,[Validators.required]),
-      about : new FormControl(null,[Validators.required]),
-      date : new FormControl(null,[Validators.required])
+      employeeName : '',
+      position : '',
+      about : '',
+      //about : new FormControl(null,[Validators.required]),
+      date : ''
     })
   }
 
@@ -63,6 +72,23 @@ export class RegistrationOfEmployeesComponent implements OnInit {
     if(!this.registrationForm.valid){
       return
     }
+    if(this.registrationForm.value.employeeName.length == 0){
+      this.invalidEmployee = true;
+      
+    }
+    if(this.registrationForm.value.position.length == 0){
+      this.invalidPosition = true;
+    }
+    if(this.registrationForm.value.about.length == 0){
+      this.invalidAbout = true;
+    }
+    if(this.registrationForm.value.date.length == 0){
+      this.invalidDate = true;
+    }
+    if(this.invalidDate || this.invalidAbout || this.invalidPosition || this.invalidEmployee){
+      return;
+    }
+
     this.employeeSubmited = true;
 
     if(this.editEmployeeData == true){
@@ -76,6 +102,23 @@ export class RegistrationOfEmployeesComponent implements OnInit {
         this.employeeSubmited = true;
       }
     }
+     this.registrationForm.reset(); 
+  }
+
+  addData(){
+    this.invalidEmployee = false;
+  }
+
+  addPositionData(){
+    this.invalidPosition = false;
+  }
+
+  addAboutData(){
+    this.invalidAbout = false;
+  }
+
+  addDate(){
+    this.invalidDate = false;
   }
 
   updateEmployee(oldEmp : any, newEmp : any){  
@@ -85,7 +128,9 @@ export class RegistrationOfEmployeesComponent implements OnInit {
          emps[i] = newEmp;
          this.toastService.openSnackBar('Employee Details Updated Sucessfully');  
         }
-      }      
-    localStorage.setItem('Employees', JSON.stringify(emps));
+      }   
+      this.registrationForm.reset();
+      localStorage.setItem('Employees', JSON.stringify(emps));
+       this.router.navigate(['/', 'card-view']);
   }
 }
