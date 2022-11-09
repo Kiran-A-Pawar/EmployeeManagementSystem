@@ -19,9 +19,12 @@ export class AppComponent {
       console.log('AppComponent.ngOnInit: Service Worker is not enabled');
       return;
     }
-    if (this.updateService.isEnabled) {
-      console.log('AppComponent.ngOnInit: Service Worker is enabled');
-      this.handleUpdates();
+    console.log('AppComponent.ngOnInit: Service Worker is enabled');
+    this.handleUpdates();
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+      });
     }
   }
 

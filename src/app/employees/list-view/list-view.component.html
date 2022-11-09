@@ -1,53 +1,65 @@
-<div class="row">
-  <div class="col-12 empDetails" *ngIf="this.employeesNotFound == false">Employee Details</div>
-</div>
-<ng-template [ngIf]="this.employeesNotFound == true" [ngIfElse]="View">
+<div [ngClass]="{ 'empTable' : this.allEmployeesData.length >= 6}">
   <div class="row">
-    <div class="col-12 recordsNotFound">
-      Records Not Found
+    <div class="col-12 empDetails" *ngIf="this.employeesNotFound == false">Employee Details</div>
+  </div>
+  <ng-template [ngIf]="this.employeesNotFound == true" [ngIfElse]="View">
+    <div class="row">
+      <div class="col-12 recordsNotFound">
+        Records Not Found
+      </div>
     </div>
-  </div>
-</ng-template>
-<ng-template #View>
-  <div class="mat-elevation-z8 empTable">
-      <table mat-table [dataSource]="dataSource">
-    
-        <!-- Name Column -->
-        <ng-container matColumnDef="employeeName">
-          <th mat-header-cell *matHeaderCellDef> Employee Name </th>
-          <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
-        </ng-container>
-    
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef> Position </th>
-          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-    
-        <!-- about Column -->
-        <ng-container matColumnDef="about">
-          <th mat-header-cell *matHeaderCellDef> About </th>
-          <td mat-cell *matCellDef="let element"> {{element.about}} </td>
-        </ng-container>
-  
-        <!-- about Column -->
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef>Joining Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date | date:'mediumDate'}} </td>
-        </ng-container>
-        <ng-container matColumnDef="Actions">
-          <th mat-header-cell >Actions</th>
-          <td mat-cell > Hello</td>
-        </ng-container>
-    
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      </table>
-    
-      <mat-paginator [pageSizeOptions]="[10, 15]"
-                     showFirstLastButtons 
-                     aria-label="Select page of periodic elements">
-      </mat-paginator>
-  </div>
-</ng-template>
+  </ng-template>
+  <ng-template #View>
+    <ng-template [ngIf]="this.allEmployeesData.length == 0" [ngIfElse]="table">
+      <div class="row">
+        <div class="col-12 display">
+          No records to display
+        </div>
+      </div>
+    </ng-template>
+    <ng-template #table>
+
+      <div class="mat-elevation-z8 empTable">
+          <table mat-table [dataSource]="dataSource">
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="employeeName">
+              <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+            </ng-container>
+        
+            <!-- Position Column -->
+            <ng-container matColumnDef="position">
+              <th mat-header-cell *matHeaderCellDef> Position </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+        
+            <!-- about Column -->
+            <ng-container matColumnDef="about">
+              <th mat-header-cell *matHeaderCellDef> About </th>
+              <td mat-cell *matCellDef="let element"> {{element.about}} </td>
+            </ng-container>
+      
+            <!-- about Column -->
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef>Joining Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.date | date:'mediumDate'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Actions">
+              <th mat-header-cell >Actions</th>
+              <td mat-cell > Hello</td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+        
+          <mat-paginator [pageSizeOptions]="[10, 15]"
+                         showFirstLastButtons 
+                         aria-label="Select page of periodic elements">
+          </mat-paginator>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
   

@@ -26,14 +26,5 @@
         ]
       }
     }
-  ],
-  "dataGroups": [
-    {
-      "name":"api",
-      "urls": [],
-      "maxSize":20,
-      "maxAge":"6d",
-      "timeout":"5s"
-    }
   ]
 }

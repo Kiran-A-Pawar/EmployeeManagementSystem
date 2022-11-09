@@ -12,6 +12,8 @@ export class EmployeesDataService {
   isLogin = false;
   isLogout = null;
   userLogin = false;
+  addNewEmployee = false;
+  isAdmin = false;
   updateEmployeeObject : any = {};
 
   constructor() { }

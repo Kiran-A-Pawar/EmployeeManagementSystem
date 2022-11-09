@@ -50,8 +50,13 @@ export class HeaderComponent implements OnInit {
   logOut(){
     let data = "";
     this.empService.isLogin = false;
+    this.empService.isAdmin = false;
+    this.empService.addNewEmployee = false;
     this.toastService.openSnackBar('User Logout Sucessfully');
     this.ms.publish('USER_LOGOUT', data);
+    if(this.empService.isAdmin == false){
+      this.router.navigate(['/', 'employeesList']);
+    }
   }
 
 }

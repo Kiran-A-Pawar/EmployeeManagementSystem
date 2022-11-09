@@ -46,11 +46,11 @@
                     <div class="col-3 nameCol date">
                         Joining Date <span class="star">*</span>
                     </div>
-                    <div clas="col-9 inputCol" class="dateInputBox" [ngClass]="{ 'dateRequired' : invalidDate == true}">
+                    <div clas="col-9 inputCol" (click)="addDate()" class="dateInputBox" [ngClass]="{ 'dateRequired' : invalidDate == true}">
                             <input formControlName="date" (click)="addDate()" class="dateInput" [matDatepickerFilter]="myFilter"
                                 placeholder="Select Joining Date" [matDatepicker]="picker">
                             <mat-hint class="dateFormate">MM/DD/YYYY</mat-hint>
-                            <mat-datepicker-toggle matSuffix class="dateFormate" [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker-toggle matSuffix class="dateFormate" (click)="addDate()" [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                     </div>
                 </div>

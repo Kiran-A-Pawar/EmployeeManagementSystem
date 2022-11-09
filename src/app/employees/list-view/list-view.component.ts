@@ -18,6 +18,7 @@ export class ListViewComponent implements OnInit, AfterViewInit {
   allEmployeesData : any = {};
   searchList = '';
   employeesNotFound = false;
+  noRecords = false;
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -31,6 +32,13 @@ export class ListViewComponent implements OnInit, AfterViewInit {
     this.empService.getEmployees();
     this.allEmployeesData = this.empService.allEmployees;
     this.dataSource = new MatTableDataSource(this.allEmployeesData);
+    // console.log("this.allEmployeesData.length",this.allEmployeesData.length)
+    // if(this.allEmployeesData.length == 0){
+    //   console.log("this.allEmployeesData.length",this.allEmployeesData.length)
+    //   this.noRecords = true;
+    // }else{
+    //   this.noRecords = false;
+    // }
 
     this.ms.subscribe('EMPLOYE_NAME', data => {
       let isObject = typeof data

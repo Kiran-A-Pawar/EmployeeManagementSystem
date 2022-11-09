@@ -37,14 +37,23 @@ export class RegistrationOfEmployeesComponent implements OnInit {
     private toastService: ToastService,
     private modalService: NgbModal,
     private router: Router,
-    ) {}
+    ) {if(this.empService.isAdmin == false){
+      this.router.navigate(['/', 'login']);
+    }}
 
   ngOnInit(): void {
+    
+    if(this.empService.isLogin == false){
+      this.empService.addNewEmployee = true;
+      this.router.navigate(['/', 'login']);
+    }
+
     this.createRegistrationForm();
     this.empService.updateEmployeeObject;
+    console.log("this.empService.updateEmployeeObject",this.empService.updateEmployeeObject)
     this.ms.subscribe('EDIT_EMPLOYEE_DATA', data => {
       console.log("Data = ",data);
-      if (Object.entries(data).length != 0) {
+      if (Object.entries(data).length != 0 && Object.entries(this.empService.updateEmployeeObject).length != 0) {
         this.editEmployeeData = true;
         this.oldEmployeeData = data.empDetails;
         this.updateEmp = data;
@@ -131,6 +140,8 @@ export class RegistrationOfEmployeesComponent implements OnInit {
       }   
       this.registrationForm.reset();
       localStorage.setItem('Employees', JSON.stringify(emps));
+      this.editEmployeeData = false;
+      this.empService.updateEmployeeObject = {}
        this.router.navigate(['/', 'card-view']);
   }
 }

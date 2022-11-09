@@ -73,8 +73,13 @@ export class LoginComponent implements OnInit {
     }else{
       if(this.loginForm.value.user == "admin" && this.loginForm.value.password == "admin"){
         this.empService.isLogin = true;
+        this.empService.isAdmin = true;
         this.toastService.openSnackBar('Login Sucessfully');
-        this.router.navigate(['/', 'list-view']);
+        if(this.empService.addNewEmployee == true){
+          this.router.navigate(['/', 'RegistrationOfEmployees']);
+        }else{
+          this.router.navigate(['/', 'list-view']);
+        }
       }
     }
   }
